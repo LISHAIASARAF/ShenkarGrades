@@ -12,7 +12,7 @@ To get the data you wish for' simply use the GET method.
 `http://studentsgrades1905.herokuapp.com/excel`
 
 
-##All excellence students from a minimum year:
+##All excellence students from a minimum year (from 1-4):
 `http://studentsgrades1905.herokuapp.com/excel/year`
 
 ###example: 
