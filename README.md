@@ -8,22 +8,24 @@ To get the data you wish for' simply use the GET method.
 [http://studentsgrades1905.herokuapp.com](http://studentsgrades1905.herokuapp.com)
 
 
-###All excellence students (grade 95 and above):
+##All excellence students (grade 95 and above):
 `http://studentsgrades1905.herokuapp.com/excel`
 
 
-###All excellence students from a minimum year:
+##All excellence students from a minimum year:
 `http://studentsgrades1905.herokuapp.com/excel/year`
 
-example: 
+###example: 
 ```
 `http://studentsgrades1905.herokuapp.com/excel/3`
 ```
 
-
-###Data of specific student (by id):
+##Data of specific student (by id):
 `http://studentsgrades1905.herokuapp.com/specific/id`
-example: `http://studentsgrades1905.herokuapp.com/specific/1`
+###example: 
+```
+`http://studentsgrades1905.herokuapp.com/specific/1`
+```
 
 Thats it!!
 Thanks,
