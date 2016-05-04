@@ -5,7 +5,7 @@ The data is returned in JSON object which holds an array of students.
 To get the data you wish for' simply use the GET method.
 
 ##Welcome page:
-`http://studentsgrades1905.herokuapp.com`
+[http://studentsgrades1905.herokuapp.com](http://studentsgrades1905.herokuapp.com)
 
 
 ###All excellence students (grade 95 and above):
