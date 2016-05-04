@@ -14,7 +14,11 @@ To get the data you wish for' simply use the GET method.
 
 ###All excellence students from a minimum year:
 `http://studentsgrades1905.herokuapp.com/excel/year`
-example: `http://studentsgrades1905.herokuapp.com/excel/3`
+
+example: 
+```
+`http://studentsgrades1905.herokuapp.com/excel/3`
+```
 
 
 ###Data of specific student (by id):
