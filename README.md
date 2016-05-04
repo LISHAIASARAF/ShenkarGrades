@@ -17,14 +17,14 @@ To get the data you wish for' simply use the GET method.
 
 ###example: 
 ```
-`http://studentsgrades1905.herokuapp.com/excel/3`
+http://studentsgrades1905.herokuapp.com/excel/3
 ```
 
 ##Data of specific student (by id):
 `http://studentsgrades1905.herokuapp.com/specific/id`
 ###example: 
 ```
-`http://studentsgrades1905.herokuapp.com/specific/1`
+http://studentsgrades1905.herokuapp.com/specific/1
 ```
 
 Thats it!!
