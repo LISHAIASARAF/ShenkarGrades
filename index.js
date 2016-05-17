@@ -2,24 +2,28 @@
 
 var grades = require('./studGrades.js');
 grades.connectToDB();
-//grades.getAllExcellenceStudent();
-//grades.getStudGrade(1);
-//grades.getExcellenceByYear(3);
+
 var express = require('express');
 var app = express();
 
 var port = process.env.PORT || 3001;
 
 app.get('/specific/:studeId', function (req, res) {
-	grades.getStudGrade(req.params.studeId, res);
+	grades.getStudGrade(req.params.studeId, function(result) {
+		res.send(result);
+	});
 });
 
 app.get('/excel', function (req, res) {
-	grades.getAllExcellenceStudent(res);
+	grades.getAllExcellenceStudent(function(result) {
+		res.send(result);
+	});
 });
 
 app.get('/excel/:year', function (req, res) {
-	grades.getExcellenceByYear(req.params.year, res);
+	grades.getExcellenceByYear(req.params.year, function(result) {
+		res.send(result);
+	});
 });
 
 app.get('*', function(req, res) {
