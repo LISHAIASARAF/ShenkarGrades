@@ -1,22 +1,25 @@
 'use strict';
 
 var grades = require('./studGrades.js');
-
+grades.connectToDB();
+//grades.getAllExcellenceStudent();
+//grades.getStudGrade(1);
+//grades.getExcellenceByYear(3);
 var express = require('express');
 var app = express();
 
 var port = process.env.PORT || 3001;
 
 app.get('/specific/:studeId', function (req, res) {
-	res.send(grades.getStudGrade(req.params.studeId));
+	grades.getStudGrade(req.params.studeId, res);
 });
 
 app.get('/excel', function (req, res) {
-	res.send(grades.getAllExcellenceStudent());
+	grades.getAllExcellenceStudent(res);
 });
 
 app.get('/excel/:year', function (req, res) {
-	res.send(grades.getExcellenceByYear(req.params.year));
+	grades.getExcellenceByYear(req.params.year, res);
 });
 
 app.get('*', function(req, res) {

@@ -1,44 +1,71 @@
 'use strict';
+var studs = require('./student');
+var mongoose = require('mongoose');
+
 var fs = require('fs');
 
 class CollegeGrades {
 	constructor(name) {
 		this.name = name;
+		this.student = mongoose.model('Students', studs);
+	}
+	
+	connectToDB() {
+		mongoose.connect("mongodb://orbenda1905:orbenda1905@ds023500.mlab.com:23500/grades1905");
+		this.conn = mongoose.connection;
+		this.conn.on('error', function(err) {
+			console.log('connection error ' + err);
+		});
+		this.conn.once('open', function() {
+			console.log('connection established!!');
+		});
 	}
 
-	getAllExcellenceStudent() {
-		//var data = require('./data/grades.json');
-		var data = JSON.parse(fs.readFileSync('./data/grades.json', 'utf-8'));
-		var students = [];
-		for (var i in data) {
-			if (data[i].grade >= 95) {
-				students.push(data[i]);
+	getAllExcellenceStudent(res) {
+		var query = studs.find();
+		query.where('grade').gt(94);
+		query.sort('year');
+		query.select('-_id');//excluding the _id automatic field
+		query.exec(function(err, result) {
+			if (err) {
+				console.log('could not for excells\n');
+				res.send(JSON.stringify({error: "failed seeking excellent"}));
+			} else {
+				console.log('the excell students are:\n' + result + '\n');
+				//return JSON.stringify(result);
+				res.send(JSON.stringify(result));
 			}
-		}
-		if (students.length === 0) students = {error: "no students with grade of 95 and above"}
-		return JSON.stringify(students, null , 4);
+		});
 	}
 
-	getStudGrade(id) {//gives the student's grade (by id)
-		var data = JSON.parse(fs.readFileSync('./data/grades.json', 'utf-8'));
-		for (var i in data) {
-			if (data[i].id == id) {
-				return JSON.stringify(data[i], null, 4);
+	getStudGrade(id, res) {
+		var query = studs.find();
+		query.where('id', id).select('-_id');
+		query.exec(function(err, result) {
+			if (err) {
+				console.log('could not seek specified id\n');
+				res.send(JSON.stringify({error: 'failed seeking id'}));
+			} else {
+				console.log('the specified stud is:\n' + result + '\n');
+				res.send(JSON.stringify(result));
 			}
-		}
-		return JSON.stringify({error: "no result"});
+		});
 	}
 
-	getExcellenceByYear(year) {
-		var data = JSON.parse(fs.readFileSync('./data/grades.json', 'utf-8'));
-		var obj = {students: []};
-		for (var i in data) {
-				if (data[i].grade >= 95 && data[i].year >= year) {
-					obj.students.push(data[i]);
-				}
+	getExcellenceByYear(year, res) {
+		var query = studs.find();
+		query.where('grade').gt(94);
+		query.where('year', year);
+		query.select('-_id');
+		query.exec(function(err, result) {
+			if (err) {
+				console.log("could not seek for excells by year\n");
+				res.send(JSON.stringify({error: "failed seeking excells by year"}));
+			} else {
+				console.log('excells students by of year ' + year + '\n' + result + '\n');
+				res.send(JSON.stringify(result));
 			}
-		if (obj.students.length === 0) obj.students = {error: "no ecxel students in this year"};
-		return JSON.stringify(obj.students, null, 4)
+		});
 	}
 }
 
