@@ -2,12 +2,9 @@
 var studs = require('./student');
 var mongoose = require('mongoose');
 
-var fs = require('fs');
-
 class CollegeGrades {
 	constructor(name) {
 		this.name = name;
-		this.student = mongoose.model('Students', studs);
 	}
 	
 	connectToDB() {
@@ -21,7 +18,7 @@ class CollegeGrades {
 		});
 	}
 
-	getAllExcellenceStudent(callback) {
+	getAllExcellenceStudent(callback) {//the callback will get the result
 		var query = studs.find();
 		query.where('grade').gt(94);
 		query.sort('year');
