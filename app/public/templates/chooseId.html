@@ -1,0 +1,4 @@
+<h3>Please pick an ID</h3>
+<input type="number" min="1" ng-model="id" required=true>
+<button ui-sref=".id({studentId: id})" ng-click='validate(id)'>Go!</button>
+<section ui-view></section>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shenkarStudents">
+<head>
+    <meta charset="UTF-8">
+    <title>Shenkar's students</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='css/bootstrap-theme.min.css'>
+    <link rel="stylesheet" type="text/css" href='css/bootstrap.min.css'>
+</head>
+<body>
+    <section class="container">
+        <h1>Hi there</h1>
+        <h2>Here you can see basic data about the students Shenkar</h2>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" ui-sref='allExcels'>all excels</button>
+            <button type="button" class="btn btn-default" ui-sref="yearExcels">year's excels</button>
+            <button type="button" class="btn btn-default" ui-sref="specificStudents">specific student</button>
+        </div>
+        <section ui-view></section>
+    </section>
+    <script src="./js/lib/angular/angular.min.js"></script>
+    <script src="./js/lib/angular/angular-ui-router.min.js"></script>
+    <script src="./js/appController.js"></script>
+</body>
+</html>
